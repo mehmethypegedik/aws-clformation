@@ -1,0 +1,30 @@
+# Setting up EC2 Instance in Staging Environment, Small Setup
+# Some parameters are static and will be changed during the course of elaboration 
+#
+AWSTemplateFormatVersion: "2010-09-09" 
+Resources: 
+ myLinuxInstanceSmallSetup:
+  Type: AWS::EC2::Instance
+  Properties:
+   SubnetId: subnet-0d1a3949c0e0088bb # static in this version   
+   ImageId: ami-0a1ee2fb28fe05df3 # Amazon Linux  
+   InstanceType: t2.micro
+   KeyName: stagingEnvKey-v02
+   Tags: 
+    - Key: Name
+      Value: myLinuxInstanceSmallSetup
+ invWebAppSmallSetupEC2Ins1:
+  Type: AWS::EC2::Instance
+  Properties:
+   SubnetId: subnet-05cce12b8dba2a617 # static in this version  
+   ImageId: ami-09891283f0dfb1630 # Inventsys web app AMI fom production  
+   InstanceType: t2.micro
+   KeyName: stagingEnvKey-v02
+   Tags: 
+    - Key: Name
+      Value: invWebAppSmallSetupEC2Ins1
+Outputs:
+ myLinuxInstanceSmallSetup:
+  Value: !Ref myLinuxInstanceSmallSetup
+ invWebAppSmallSetupEC2Ins1:
+  Value: !Ref invWebAppSmallSetupEC2Ins1
