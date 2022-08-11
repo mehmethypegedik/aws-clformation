@@ -1,0 +1,68 @@
+# Setting up EC2 Instance in Dev  Environment 
+# AMI from production are used. 
+# Some parameters are static and will be changed during the course of elaboration 
+#
+AWSTemplateFormatVersion: "2010-09-09" 
+Resources: 
+ invWebAppEC2Ins1:
+  Type: AWS::EC2::Instance
+  Properties:
+   SubnetId: subnet-06a512a4d427a371a # static in this version  
+   ImageId:  ami-0ef302d62db6e0b6e # Inventsys web app AMI from staging
+   InstanceType: t2.micro
+   KeyName: dev2EnvKey-v02
+   Tags: 
+    - Key: Name
+      Value: devWebAppEC2Ins1
+ invWebAdminEC2Ins1:
+  Type: AWS::EC2::Instance
+  Properties:
+   SubnetId: subnet-04a9f18f33188b034 # static in this version  
+   ImageId:  ami-007d97546f3e24c58 # Inventsys web app AMI fom production  
+   InstanceType: t2.micro
+   KeyName: dev2EnvKey-v02
+   Tags: 
+    - Key: Name
+      Value: devWebAdminEC2Ins1
+ invQueueEC2Ins1:
+  Type: AWS::EC2::Instance
+  Properties:
+   SubnetId: subnet-06a512a4d427a371a # static in this version  
+   ImageId:  ami-028c555d363ddf872 # Inventsys web app AMI fom production  
+   InstanceType: t2.micro
+   KeyName: dev2EnvKey-v02
+   Tags: 
+    - Key: Name
+      Value: devQueuEC2Ins1
+ invGeoServerEC2Ins1:
+  Type: AWS::EC2::Instance
+  Properties:
+   SubnetId: subnet-083a6c964bc9c88be # static in this version  
+   ImageId: ami-05dbbe9f04f67f4be # Inventsys web app AMI fom production  
+   InstanceType: t2.micro
+   KeyName: dev2EnvKey-v02
+   Tags: 
+    - Key: Name
+      Value: devGeoServerEC2Ins1
+ invDevStandaloneEC2Ins1:
+  Type: AWS::EC2::Instance
+  Properties:
+   SubnetId: subnet-083a6c964bc9c88be # static in this version  
+   ImageId: ami-05dbbe9f04f67f4be # Inventsys web app AMI fom production  
+   InstanceType: t2.micro
+   KeyName: dev2EnvKey-v02
+   Tags: 
+    - Key: Name
+      Value: devStandaloneEC2Ins1
+
+Outputs:
+ WebAppEC2Instance1:
+  Value: !Ref invWebAppEC2Ins1
+ WebAdminEC2Instance1:
+  Value: !Ref invWebAdminEC2Ins1
+ QueueEC2Instance1:
+  Value: !Ref invQueueEC2Ins1 
+ GeoServerEC2Instance1:
+  Value: !Ref invGeoServerEC2Ins1 
+ invDevStandaloneEC2Ins1:
+  Value: !Ref invDevStandaloneEC2Ins1
