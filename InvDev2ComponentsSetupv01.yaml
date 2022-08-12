@@ -48,7 +48,7 @@ Resources:
   Type: AWS::EC2::Instance
   Properties:
    SubnetId: subnet-083a6c964bc9c88be # static in this version  
-   ImageId: ami-05dbbe9f04f67f4be # Inventsys web app AMI fom production  
+   ImageId: ami-0f6d467e79492aea6 # Inventsys web app AMI fom production  
    InstanceType: t2.micro
    KeyName: dev2EnvKey-v02
    Tags: 
