@@ -1,1 +1,10 @@
 AWSTemplateFormatVersion: "2010-09-09" 
+Resources: 
+ VPC: 
+  Type: AWS::EC2::VPC 
+  Properties: 
+   CidrBlock: 10.0.0.0/16
+   EnableDnsHostnames: True 
+   Tags: 
+    - Key: Name 
+      Value: !Sub 'VPC-InvSys - ${AWS::StackName}'
